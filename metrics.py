@@ -17,6 +17,11 @@ metric_labels = {
     'fstype': None
 }
 if volume_info['labels']:
+    for label in volume_info['labels'].keys():
+        if '-' in label:
+            volume_info['labels'][label.replace(
+                '-', '_')] = volume_info['labels']['label']
+            volume_info['labels'].pop(label)
     metric_labels.update(volume_info['labels'])
 
 metrics = {
