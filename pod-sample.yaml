@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-volume
+  labels:
+    app: budega
+spec:
+  volumes:
+    - name: budega
+      emptyDir: {}
+    - name: data
+      hostPath:
+        path: /tmp
+  containers:
+    - name: client-container
+      image: psychopenguin/kube-volume-stats
+      volumeMounts:
+        - name: budega
+          mountPath: /budega
+      env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace

@@ -38,3 +38,7 @@ def get_fsdetails(fs):
     fs['free'] = fs_stat.f_bsize * fs_stat.f_bfree
     return fs
 
+
+def get_fs_info():
+    fslist = get_valid_mountpoints()
+    return [get_fsdetails(fs) for fs in fslist]

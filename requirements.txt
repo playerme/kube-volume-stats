@@ -1,0 +1,4 @@
+prometheus-client==0.1.0
+kubernetes==4.0.0
+apscheduler==3.4.0
+flask==0.12.2
