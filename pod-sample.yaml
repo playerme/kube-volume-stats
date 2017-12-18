@@ -4,10 +4,10 @@ kind: Pod
 metadata:
   name: kube-volume
   labels:
-    app: budega
+    app: kube-volume
 spec:
   volumes:
-    - name: budega
+    - name: sample
       emptyDir: {}
     - name: data
       hostPath:
@@ -16,8 +16,8 @@ spec:
     - name: client-container
       image: psychopenguin/kube-volume-stats
       volumeMounts:
-        - name: budega
-          mountPath: /budega
+        - name: sample
+          mountPath: /sample
       env:
         - name: POD_NAME
           valueFrom:
