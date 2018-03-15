@@ -3,5 +3,5 @@ WORKDIR /app
 ADD requirements.txt /app
 RUN pip install -r requirements.txt
 ADD . /app
-ENTRYPOINT ["python", "exporter.py"]
+CMD ["python", "exporter.py"]
 EXPOSE 9595
